@@ -63,6 +63,7 @@
 {% endcase %}
 
 {% assign itemsOfSize = items | size %}
+
 {% comment %}
   {% if itemsOfSize <= 3 %}
   {% endif %}
@@ -77,6 +78,7 @@
 
 <div class="blog-slider-section">
   <div class="title">
+    <h2>{{ section.settings.title }}</h2>
     <h2>{{ section.settings.title }}</h2>
   </div>
   <div class="slider">
