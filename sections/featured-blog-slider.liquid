@@ -1,0 +1,217 @@
+{% comment %}
+      {{ slick.css | asset_url | stylesheet_tag }}
+      {{ slick-theme.css | asset_url | stylesheet_tag }}
+
+    <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'slick.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'slick-them.css' | asset_url | stylesheet_tag }}</noscript>
+{% endcomment %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+  media="print"
+  onload="this.media='all'"
+>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+  media="print"
+  onload="this.media='all'"
+>
+{% stylesheet %}
+{% endstylesheet %}
+<style>
+  .blog-slider-section{
+     width: 80%;
+     margin: 50px auto;
+  }
+  .title{
+     margin-bottom: 30px;
+  }
+  .slider__item img{
+    width: 100%;
+    height: 200px;
+  }
+</style>
+
+{% case section.settings.selectSlideData %}
+  {% when 'blogs' %}
+    {% assign blog_handle = 'blog' %}
+    {% assign items = blogs[blog_handle].articles %}
+  {% when 'collections' %}
+    {% assign items = collections %}
+  {% else %}
+    {% assign items = null %}
+{% endcase %}
+
+{% assign itemsOfSize = items | size %}
+{% comment %}
+  {% if itemsOfSize <= 3 %}
+  {% endif %}
+{% endcomment %}
+
+<!--
+  <script>
+    console.log({{ blog.articles | json }});
+    console.log({{ collections | size }});
+  </script>
+-->
+
+<div class="blog-slider-section">
+  <div class="title">
+    <h2>{{ section.settings.title }}</h2>
+  </div>
+  <div class="slider">
+    {% for item in items %}
+      <div class="slider__wrap">
+        <div class="slider__item">
+          <a href="{{ item.url }}">
+            <img src="{{ item | img_url}}" alt="{{ item.title }}">
+            <h3>{{ item.title }}</h3>
+            {% if section.settings.selectSlideData == 'blogs' %}
+              <h5>{{ item.author }}</h5>
+              <h3>{{ item.updated_at | date: '%a, %b %d, %y' }}</h3>
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="{{ 'jquery.min.js' | asset_url }}"></script>
+<script src="{{ 'slick.min.js' | asset_url }}"></script>
+<script
+  type="text/javascript"
+  id="blogSliderJs"
+  src="{{ 'blogSlider.js' | asset_url }}"
+  autoplay1="{{ section.settings.autoplay | boolean }}"
+  autoplaySpeed="{{ section.settings.autoplaySpeed }}"
+  slidesToScroll="{{ section.settings.slidesToScroll }}"
+  dots="{{ section.settings.slidedot | boolean }}"
+></script>
+
+{% schema %}
+{
+  "name": "Blog Slider",
+  "tag": "section",
+  "settings": [
+    { "type": "text",
+      "id": "title",
+      "label": {
+        "en":"Title",
+        "ja":"タイトル"
+        }
+      },
+    {
+  "type": "select",
+  "id": "selectSlideData",
+  "label": "Select silde data",
+  "options": [
+    {
+      "value": "blogs",
+      "label": "blogs"
+    },
+    {
+      "value": "collections",
+      "label": "collections"
+    }
+  ],
+  "default": "blogs"
+},
+    {
+  "type": "select",
+  "id": "slidesToScroll",
+  "label": "Number of slide show",
+  "options": [
+    {
+      "value": "1",
+      "label": "1"
+    },
+    {
+      "value": "2",
+      "label": "2"
+    },
+    {
+      "value": "3",
+      "label": "3"
+    }
+  ],
+  "default": "2"
+},
+    {
+  "type": "select",
+  "id": "autoplaySpeed",
+  "label": "Sliding speed",
+  "options": [
+    {
+      "value": "200",
+      "label": "0.2s/slide"
+    },
+    {
+      "value": "500",
+      "label": "0.5s/slide"
+    },
+    {
+      "value": "1000",
+      "label": "1s/slide"
+    },
+    {
+      "value": "2000",
+      "label": "2s/slide"
+    }
+  ],
+  "default": "500"
+},
+    {
+  "type": "radio",
+  "id": "slidedot",
+  "label": "Sliding by clicking dots",
+  "options": [
+    {
+      "value": "true",
+      "label": "show"
+    },
+    {
+      "value": "false",
+      "label": "not show"
+    }
+  ],
+  "default": "true"
+},
+    {
+  "type": "checkbox",
+  "id": "autoplay",
+  "label": "Auto play slides",
+  "default": true
+}
+  ],
+  "presets": [
+    {
+      "name": "Blog Slider",
+      "category": "ADVANCED LAYOUT"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

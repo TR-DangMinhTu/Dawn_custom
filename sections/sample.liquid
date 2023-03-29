@@ -1,0 +1,112 @@
+
+
+{% stylesheet %}
+  .sample{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto;
+  }
+  
+  .sample-button{
+    width: 1000px;
+    height: 165px;
+    background-color: #ff0000;
+    border-radius: 30px;
+    padding: 20px 30px;
+    color: #fff;
+    font-size: 60px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 0;
+    margin: 0 auto;
+  }
+
+  .richtext-contents{
+    width: 100%;
+    padding: 20px;
+    background: {{section.settings.color_header_bg}};
+    border-radius: 20px;
+    text-align: justify;
+    box-shadow: 3px 5px 5px #8f7332;
+  }
+{% endstylesheet %}
+
+<section class="sample">
+  <div class="container">
+    <h1>{{ section.settings.title }}</h1>
+    <div class="richtext-contents">{{ section.settings.text }}</div>
+    <img src="{{ section.settings.logo | image_url:'300x300' }}" />
+    <a href="{{ section.settings.massage_list }}"></a>
+    <a class="sample-button" href="{{ section.settings.link-button }}">
+      {{ section.settings.text-button }}
+    </a>
+  </div>
+</section>
+
+{% javascript %}
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Sample",
+    "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en":"Title",
+        "ja":"タイトル"
+        }
+      },
+      {
+      "type": "richtext",
+      "id": "text",
+      "label": {
+        "en":"Text",
+        "ja":"本文"
+        }
+      }, 
+      {
+        "type": "text",
+        "id": "text-button",
+        "label": "Text"
+      },
+      {
+        "type":"image_picker",
+        "id":"image1",
+        "label":{
+          "en": "Image1",
+          "ja": "画像１"
+        }
+      },
+      {
+        "type": "url",
+        "id": "link-button",
+        "label": "Link"
+      },
+      {
+        "type": "textarea",
+        "id": "custommhtml",
+        "label":{
+          "en": "html",
+          "jp": "html"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": {
+          "en": "color",
+          "es": "color"
+        },
+        "default": "#044F67"
+    }
+    
+    ],
+    "presets":[{
+      "name": "Sample section",
+      "category": "ADVANCED LAYOUT"      
+    }]
+  }
+{% endschema %}
