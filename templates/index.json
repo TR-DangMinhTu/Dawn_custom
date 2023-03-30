@@ -7,7 +7,7 @@
         "selectSlideData": "blogs",
         "slidesToScroll": "2",
         "autoplaySpeed": "2000",
-        "slidedot": "true",
+        "slidedot": "false",
         "autoplay": true
       }
     },
