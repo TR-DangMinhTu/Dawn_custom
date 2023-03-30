@@ -6,7 +6,7 @@
         "title": "dang minh tu blogs",
         "selectSlideData": "blogs",
         "slidesToScroll": "2",
-        "autoplaySpeed": "500",
+        "autoplaySpeed": "2000",
         "slidedot": "true",
         "autoplay": true
       }
