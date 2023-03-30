@@ -10,8 +10,8 @@
         "selectSlideData": "blogs",
         "slidesToScroll": "2",
         "autoplaySpeed": "2000",
-        "slidedot": "false",
-        "autoplay": true
+        "slidedot": "true",
+        "autoplay": false
       }
     },
     "image_banner": {
