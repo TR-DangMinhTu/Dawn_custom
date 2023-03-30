@@ -8,7 +8,7 @@
       "settings": {
         "title": "dang minh tu blogs",
         "selectSlideData": "blogs",
-        "slidesToScroll": "3",
+        "slidesToScroll": "2",
         "autoplaySpeed": "2000",
         "slidedot": "false",
         "autoplay": true
