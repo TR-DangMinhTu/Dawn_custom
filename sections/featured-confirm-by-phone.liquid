@@ -43,6 +43,18 @@
       デバイス削除
     </button -->
 
+    {% if shop.customer_accounts_enabled %}
+  {% if customer %}
+    <a href="{{ routes.account_url }}">Account</a>
+  {% else %}
+    <a href="{{ routes.account_login_url }}">Login</a>
+
+    {% if shop.customer_accounts_optional %}
+      <span>or</span>
+      <a href="{{ routes.account_register_url }}">Create an account</a>
+    {% endif %}
+  {% endif %}
+{% endif %}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
