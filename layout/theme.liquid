@@ -497,17 +497,6 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <!--   LOGOUT REDIRECT -->
-    <script>
-      (function() {
-        var REDIRECT_PATH = "/collections/all";
-        var logoutBtn = document.querySelector('a[href^="/account/logout"]');
-        if (logoutBtn) {
-          logoutBtn.addEventListener('click', function() {
-            fetch(logoutBtn.href).then(() => window.location.href = REDIRECT_PATH)
-          })
-        }
-      })()
-    </script>
+    <script src="{{ 'customer-redirect-atfer-logout.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>
