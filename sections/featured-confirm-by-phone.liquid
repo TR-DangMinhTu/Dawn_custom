@@ -20,7 +20,7 @@
 
 <div class="main">
     <h1>sample</h1>
-    <form action="sample.php?load=1" method="post">
+    <form action="pages/confirmowner?load=1" method="post">
         <label for="name">fp:</label>
 	<input type="text" id="fp" name="fpinfo"></br>
         <label for="name">request_cd:</label>
@@ -31,7 +31,8 @@
         <input type="text" name="pre_tel" minlength="10" maxlength="11"></br>
 	<label for="name">timer:</label>
         <input type="text" id="txttimer" name="txttimer" required ></br>
-	<button type="submit" name="auth">認証</button><div id="tel_link"><a href="tel:050-8885-1386">050-8885-1386</a><div>
+	<button type="submit" name="auth">認証</button>
+    <div id="tel_link"><a href="tel:050-8885-1386">050-8885-1386</a><div>
 	<br><br>
         <label for="name">changedTel:</label><label id="tel"></label><br>
 	<label for="name">timer:</label><label id="timer">60</label><br>
