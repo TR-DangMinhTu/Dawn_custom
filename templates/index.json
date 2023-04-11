@@ -2,13 +2,16 @@
   "sections": {
     "8c60f613-ca1d-4377-b8cb-9925732a17d7": {
       "type": "featured-blog-slider",
+      "custom_css": [
+
+      ],
       "settings": {
         "title": "dang minh tu blogs",
         "selectSlideData": "blogs",
         "slidesToScroll": "2",
-        "autoplaySpeed": "500",
+        "autoplaySpeed": "2000",
         "slidedot": "true",
-        "autoplay": true
+        "autoplay": false
       }
     },
     "image_banner": {
