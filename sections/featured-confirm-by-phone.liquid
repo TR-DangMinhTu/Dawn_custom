@@ -42,4 +42,127 @@
       デバイス削除
     </button -->
 
-  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script language="javascript" type="text/javascript">
+    $(function(){
+      // URLを取得
+      let url = new URL(window.location.href);
+      var timerId;
+
+      // URLSearchParamsオブジェクトを取得
+      let params = url.searchParams;
+      // getメソッド
+      //console.log(params.get('load'));
+
+      var fpinfo;
+      const fpPromise = import('https://fpcdn.io/v3/nPEHMEMtYdd3fEymMvtT')
+        .then(FingerprintJS => FingerprintJS.load());
+
+      // Get the visitor identifier when you need it.
+      fpPromise
+        .then(fp => fp.get())
+	  .then(result => {$("#fp").val(result.visitorId);});
+
+
+      var timerMethod = function() {
+        var time = $("#timer").html();
+        //if (time - 1 <= 0) {
+        //  $("#timer").html("0");
+        //} else {
+        //  $("#timer").html(time - 1);
+	//}
+
+	var data = {
+          company_cd: "2840200001",
+          finger_print: $("#fp").val(),
+          conv_telno: $("#tel").html()
+	};
+
+        // 通信実行
+        $.ajax({
+          type:"post",
+          url:"https://dev.v2-auth.infront-system.net/api/v10/infrontsecurity20/auth_result",
+          data:JSON.stringify(data),
+          contentType: 'application/json',
+          dataType: "json",
+	  success: function(json_data) {   // 200 OK時
+            console.log(json_data);
+	    if (json_data["result"] == "0") {
+              //正常終了
+	      if (json_data["detail"] == "00") {
+                $("#status").html("電話認証待ち" + JSON.stringify(json_data));
+	      } else if (json_data["detail"] == "01") {
+                $("#status").html("認証済み" + JSON.stringify(json_data));
+                clearInterval(timerId);
+	      } else if (json_data["detail"] == "02") {
+                $("#status").html("タイムアウト" + JSON.stringify(json_data));
+                clearInterval(timerId);
+	      }
+	      //clearInterval(timerId);
+	    } else {
+              if (json_data["detail"] == "15") {
+                $("#status").html("すでに申請中" + JSON.stringify(json_data));
+	      } else {
+	        $("#status").html("エラー" + JSON.stringify(json_data));
+	        clearInterval(timerId);
+	      }
+	    }
+	  },
+          error: function() {         // HTTPエラー時
+            alert("Server Error. Please try again later.");
+          },
+          complete: function() {
+          }
+	});
+
+        if (time - 1 <= 0) {
+          $("#timer").html("0");
+        } else {
+          $("#timer").html(time - 1);
+        }
+      }
+
+      if (params.get('load') == "1") {
+        timerId = setInterval(timerMethod, 1000);
+      }
+      $("#tel").html($("#changedTel").val());
+      $("#timer").html($("#hidden_timer").val());
+      $("#txttimer").val($("#hidden_timer").val());
+    });
+
+    function OnButtonClick() {
+        var data = {
+          company_cd: "2840200001",
+          request_cd: "999999",		  
+          finger_print: "",
+          conv_telno: "",
+          pre_telno: "",
+          is_auth_tel: false
+    };
+
+        // 通信実行
+        $.ajax({
+	  type:"post",
+          headers: {
+            'X-HTTP-Method-Override': 'POST',
+            'Content-Type': 'application/json'
+          },
+          url:"https://dev.v2.infront-system.net/api/v10/auth_request",
+          data:JSON.stringify(data),
+          contentType: 'application/json',
+          dataType: "json",
+          success: function(json_data) {   // 200 OK時
+		  console.log(json_data);
+		  alert("デバイスを削除しました");
+          },
+          error: function() {         // HTTPエラー時
+            alert("Server Error. Please try again later.");
+          },
+          complete: function() {
+          }
+        });
+    }
+
+  </script>
