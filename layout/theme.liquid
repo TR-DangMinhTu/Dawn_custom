@@ -9,30 +9,36 @@
     <link
       rel="preconnect"
       href="https://cdn.shopify.com"
-      crossorigin>
+      crossorigin
+    >
 
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
         type="image/png"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
     {%- endif -%}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link
         rel="preconnect"
         href="https://fonts.shopifycdn.com"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
 
     <title>
       {{ page_title }}
       {%- if current_tags %}
-        &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        &ndash; tagged "{{ current_tags | join: ', ' }}"
+      {%- endif -%}
       {%- if current_page != 1 %}
-        &ndash; Page {{ current_page }}{% endif -%}
+        &ndash; Page {{ current_page -}}
+      {%- endif -%}
       {%- unless page_title contains shop.name %}
-        &ndash; {{ shop.name }}{% endunless -%}
+        &ndash; {{ shop.name -}}
+      {%- endunless -%}
     </title>
 
     {% if page_description %}
@@ -404,7 +410,8 @@
         as="font"
         href="{{ settings.type_body_font | font_url }}"
         type="font/woff2"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
       <link
@@ -412,7 +419,8 @@
         as="font"
         href="{{ settings.type_header_font | font_url }}"
         type="font/woff2"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}
@@ -420,7 +428,8 @@
         rel="stylesheet"
         href="{{ 'component-predictive-search.css' | asset_url }}"
         media="print"
-        onload="this.media='all'">
+        onload="this.media='all'"
+      >
     {%- endif -%}
 
     <script>
@@ -431,13 +440,14 @@
     </script>
     {% capture cur %}
       {% include "booster-currency" %}{% endcapture %}
-    {% unless cur contains "Liquid error" %}
-      {{ cur }}{% endunless %}
+    {% unless cur contains 'Liquid error' %}
+      {{ cur -}}
+    {%- endunless %}
   </head>
 
   <body class="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
+      {{ 'accessibility.skip_to_text' | t }}
     </a>
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -450,7 +460,8 @@
       id="MainContent"
       class="content-for-layout focus-none"
       role="main"
-      tabindex="-1">
+      tabindex="-1"
+    >
       {{ content_for_layout }}
     </main>
 
@@ -461,9 +472,8 @@
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
 
-
-
     <script>
+      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -491,23 +501,23 @@
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`
       }
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <!--   LOGOUT REDIRECT -->
+    <!-- LOGOUT REDIRECT -->
+
     <script>
-      (function() {
-        var REDIRECT_PATH = "/collections/all";
-        var logoutBtn = document.querySelector('a[href^="/account/logout"]');
-        if (logoutBtn) {
-          logoutBtn.addEventListener('click', function() {
-            fetch(logoutBtn.href).then(() => window.location.href = REDIRECT_PATH)
-          })
-        }
-      })()
+      var REDIRECT_PATH = "/collections/all";
+      var logoutBtn = document.querySelector('a[href^="/account/logout"]');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          fetch(logoutBtn.href).then(() => window.location.href = REDIRECT_PATH)
+        })
+      }
     </script>
   </body>
 </html>
