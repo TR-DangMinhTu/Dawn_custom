@@ -6,9 +6,16 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "featured-confirm-by-phone": {
+      "type": "featured-confirm-by-phone",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
     }
   },
   "order": [
-    "main"
+    "featured-confirm-by-phone"
   ]
 }
