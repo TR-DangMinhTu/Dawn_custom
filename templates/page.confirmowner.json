@@ -16,6 +16,7 @@
     }
   },
   "order": [
+    "main",
     "featured-confirm-by-phone"
   ]
 }
