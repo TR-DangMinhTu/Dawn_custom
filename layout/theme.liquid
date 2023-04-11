@@ -474,6 +474,7 @@
 
     <script>
       
+      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -502,22 +503,11 @@
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`
       }
 
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
-    <!-- LOGOUT REDIRECT -->
-
-    <script>
-      var REDIRECT_PATH = "/collections/all";
-      var logoutBtn = document.querySelector('a[href^="/account/logout"]');
-      if (logoutBtn) {
-        logoutBtn.addEventListener('click', function() {
-          fetch(logoutBtn.href).then(() => window.location.href = REDIRECT_PATH)
-        })
-      }
-    </script>
   </body>
 </html>
