@@ -41,6 +41,7 @@
         },
         "7d54e359-231d-4d50-80ef-5f45a56fdd80": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
             "button_label_1": "すぐ購入",
             "button_link_1": "shopify:\/\/collections\/all",
