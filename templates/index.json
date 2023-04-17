@@ -22,20 +22,6 @@
         "include_margins": true
       }
     },
-    "8c60f613-ca1d-4377-b8cb-9925732a17d7": {
-      "type": "featured-blog-slider",
-      "custom_css": [
-
-      ],
-      "settings": {
-        "title": "dang minh tu blogs",
-        "selectSlideData": "blogs",
-        "slidesToScroll": "2",
-        "autoplaySpeed": "2000",
-        "slidedot": "true",
-        "autoplay": false
-      }
-    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -81,6 +67,21 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
+      }
+    },
+    "8c60f613-ca1d-4377-b8cb-9925732a17d7": {
+      "type": "featured-blog-slider",
+      "disabled": true,
+      "custom_css": [
+
+      ],
+      "settings": {
+        "title": "dang minh tu blogs",
+        "selectSlideData": "blogs",
+        "slidesToScroll": "2",
+        "autoplaySpeed": "2000",
+        "slidedot": "true",
+        "autoplay": false
       }
     },
     "04abab3a-f780-4b1d-b290-a8500d0af8f8": {
@@ -339,8 +340,8 @@
   },
   "order": [
     "168171174041dca3a7",
-    "8c60f613-ca1d-4377-b8cb-9925732a17d7",
     "image_banner",
+    "8c60f613-ca1d-4377-b8cb-9925732a17d7",
     "04abab3a-f780-4b1d-b290-a8500d0af8f8",
     "featured_collection",
     "81d3adab-c98e-481d-9ccf-9670aad8b51d",
