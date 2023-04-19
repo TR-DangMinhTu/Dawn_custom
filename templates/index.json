@@ -6,7 +6,7 @@
         "5424c4f0-d759-408c-a4e5-63305064e7af": {
           "type": "shopify:\/\/apps\/tu-app-theme-extension\/blocks\/test-slider\/ad1e08b4-fec3-4802-9513-d6e56f8cc95b",
           "settings": {
-            "title": "slider",
+            "title": "This is app block slider",
             "blog": "blog",
             "autoplaySpeed": "500",
             "slidedot": "true",
