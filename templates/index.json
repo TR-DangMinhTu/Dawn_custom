@@ -10,8 +10,8 @@
             "blog": "blog",
             "autoplaySpeed": "500",
             "slidedot": "true",
-            "autoplay": true,
-            "slidesToScroll": "2"
+            "autoplay": "true",
+            "slidesToScroll": "4"
           }
         }
       },
