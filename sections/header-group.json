@@ -1,1 +1,70 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"783d1e2a-dfc4-4cd9-9594-54165c3da099":{"type":"announcement","settings":{"text":"Welcome to our store","text_alignment":"center","color_scheme":"inverse","link":""}}},"block_order":["783d1e2a-dfc4-4cd9-9594-54165c3da099"],"settings":{}},"header":{"type":"header","custom_css":[],"settings":{"color_scheme":"background-1","logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"reduce-logo-size","show_line_separator":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}}},"order":["announcement-bar","header"]}
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "783d1e2a-dfc4-4cd9-9594-54165c3da099": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "text_alignment": "center",
+            "color_scheme": "inverse",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "783d1e2a-dfc4-4cd9-9594-54165c3da099"
+      ],
+      "settings": {
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "reduce-logo-size",
+        "show_line_separator": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "1681951756fc9481be": {
+      "type": "apps",
+      "blocks": {
+        "7d811229-0081-41be-90c1-4a98407573d9": {
+          "type": "shopify:\/\/apps\/tu-app-theme-extension\/blocks\/test-slider\/ad1e08b4-fec3-4802-9513-d6e56f8cc95b",
+          "settings": {
+            "title": "tu slider",
+            "blog": "blog",
+            "autoplaySpeed": "500",
+            "slidedot": "true",
+            "autoplay": "true",
+            "slidesToScroll": "3"
+          }
+        }
+      },
+      "block_order": [
+        "7d811229-0081-41be-90c1-4a98407573d9"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "1681951756fc9481be"
+  ]
+}
