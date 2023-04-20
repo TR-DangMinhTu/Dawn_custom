@@ -42,11 +42,11 @@
     "1681951756fc9481be": {
       "type": "apps",
       "blocks": {
-        "7d811229-0081-41be-90c1-4a98407573d9": {
+        "193970f8-9160-45f4-864c-242ecad71b73": {
           "type": "shopify:\/\/apps\/tu-app-theme-extension\/blocks\/test-slider\/ad1e08b4-fec3-4802-9513-d6e56f8cc95b",
           "settings": {
-            "title": "tu slider",
-            "blog": "blog",
+            "title": "",
+            "blog": "",
             "autoplaySpeed": "500",
             "slidedot": "true",
             "autoplay": "true",
@@ -55,7 +55,7 @@
         }
       },
       "block_order": [
-        "7d811229-0081-41be-90c1-4a98407573d9"
+        "193970f8-9160-45f4-864c-242ecad71b73"
       ],
       "settings": {
         "include_margins": true
